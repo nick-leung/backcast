@@ -1,15 +1,26 @@
 var VideoPlayerView = Backbone.View.extend({
-  
+
   initialize: function() {
-    this.on('select', this.render());
+    this.listenTo(this.collection, 'select', this.selectVideo);
+  },
+
+  selectVideo: function(video) {
+    this.model = video;
+    this.render();
   },
 
   render: function() {
-    this.$el.html('<div class="loading">Please wait...</div>');
-    this.$el.html(this.template());
+    // this.$el.html('<div class="loading">Please wait...</div>');
+    this.$el.html(this.template(this.model.attributes));
     return this;
   },
 
   template: templateURL('src/templates/videoPlayer.html')
 
 });
+
+
+//VIEW -> display container
+//INITIALIZE - triggered every time you create a new instance
+//MODEL -> 
+//CONSTRUCTORS: model, collection, view

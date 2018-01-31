@@ -7,7 +7,6 @@ var VideoListView = Backbone.View.extend({
   render: function() {
     this.$el.children().detach();
     this.$el.html(this.template());
-    // window.exampleVideoData.forEach(this.renderVideo, this);
     this.collection.forEach(this.renderVideo, this);
   },
 
